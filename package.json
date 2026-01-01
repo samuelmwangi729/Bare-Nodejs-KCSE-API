@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "start": "pm2 link 8kf4td1pnnqzxh1 ik4wgzr55d3ifqg && pm2 start src/server.js -i 4 --name kcse-api --watch",
+    "stop": "pm2 stop kcse-api",
+    "restart": "pm2 restart kcse-api",
+    "logs": "pm2 logs kcse-api",
+    "monit": "pm2 monit"
   },
   "keywords": [],
   "author": "",
