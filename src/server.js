@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const serverless = require("serverless-http"); // <- required for serverless
 const { KCSE } = require("./controllers/kcse.controller");
 
 const app = express();
@@ -13,5 +12,8 @@ app.use(bodyParser.json());
 // Routes
 app.post("/api/kcse", KCSE);
 
-// Export the app as a serverless handler
-module.exports.handler = serverless(app);
+// Start server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`KCSE API running on port ${PORT}`);
+});
